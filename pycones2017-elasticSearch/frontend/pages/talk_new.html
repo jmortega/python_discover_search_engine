@@ -1,0 +1,36 @@
+<h1>Insert New Talk</h1>
+
+<form novalidate="novalidate" class="form-horizontal">
+    <div class="control-group">
+        <label class="control-label" for="name">Talk title:</label>
+        <div class="controls">
+            <input type="text" class="form-control" id="name" ng-model="talk.title"/>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="producer">Author:</label>
+        <div class="controls">
+            <input type="text" class="form-control" id="producer" ng-model="talk.author"/>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="types">Type:</label>
+        <div class="controls">
+            <label ng-repeat="type in types">
+            <input type="checkbox" name="types[]" id="types_{{type.name}}" ng-model="type.checked" value="{{type.name}}"> {{type.name}}
+            </label>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="description">Talk Description:</label>
+        <div class="controls">
+            <textarea id="description" class="form-control" ng-model="talk.description" rows="5"></textarea>
+        </div>
+    </div>
+    <div class="control-group" style="margin-top: 30px;">
+        <div class="controls">
+            <a ng-click="insertTalk()" class="btn btn-small btn-primary">Save</a>
+            <a ng-click="cancel()" class="btn btn-small">Cancel</a>
+        </div>
+    </div>
+</form>

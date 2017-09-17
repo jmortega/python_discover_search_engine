@@ -1,0 +1,41 @@
+{
+    "settings": {
+        "number_of_shards" : 1,
+        "number_of_replicas": 0,
+        "analysis": {
+            "filter": {
+                "autocomplete_filter": {
+                    "type":     "edge_ngram",
+                    "min_gram": 2,
+                    "max_gram": 15
+                }
+            },
+            "analyzer": {
+                "autocomplete": {
+                    "type":      "custom",
+                    "tokenizer": "standard",
+                    "filter": [
+                        "lowercase",
+                        "autocomplete_filter" 
+                    ]
+                }
+            }
+        }
+    },
+    "mappings": {
+        "talks": {
+            "properties": {
+                "title": {"type": "string", "index_analyzer": "autocomplete", "search_analyzer": "standard"},
+                "types": {"type": "string", "search_analyzer": "standard"},
+                "author": {"type": "string", "index_analyzer": "autocomplete", "search_analyzer": "standard"},
+                "description": {"type": "string", "search_analyzer": "standard"}
+            }
+        },
+        "styles": {
+            "properties": {
+                "name": {"type": "string", "index": "not_analyzed"},
+                "parent":{"type": "string", "index": "not_analyzed"}
+            }
+        }
+    }
+}
