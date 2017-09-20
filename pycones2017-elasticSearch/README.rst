@@ -5,7 +5,7 @@ Installation
 ------------
 
 * Elasticsearch is running locally (localhost:9200)
-* Tested on Python 3.4
+* Tested on Python 3.6
 * Use virtualenv to install Python dependencies
 
 Clone repo, install virtualenv, install Python dependencies::
